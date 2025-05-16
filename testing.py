@@ -1,26 +1,25 @@
-import difflib                  # For comparing text similarity (e.g., Levenshtein distance)
-import os                       # For file and directory operations
-import json                     # For handling JSON data
-import re                       # For regular expressions (pattern matching in text)
-import time                     # For time-related operations
-import random                   # For generating random numbers (e.g., test cases)
-import hashlib                  # For generating hashes (used in integrity verification)
-import io                       # For input/output operations (file-like objects)
-import warnings                 # To handle  warning messages
-from datetime import datetime   # To handle timestamps and date/time formats
-from pathlib import Path        # For file path manipulations (cross-platform)
+import difflib
+import os
+import json
+import re
+import time
+import random
+import hashlib
+import io
+import warnings
+from datetime import datetime
+from pathlib import Path
 
-import numpy as np                                      # Numerical operations (image arrays, etc.)
-from flask import Flask, request, jsonify, render_template_string  # Web server & API creation
-from flask_cors import CORS       # To handle Cross-Origin Resource Sharing (API access from other domains)
-from PIL import Image, ImageStat, ImageChops, ImageEnhance  # For image manipulation and ELA (Error Level Analysis)
-import cv2                                        # OpenCV - image processing (noise analysis, hashing, etc.)
-import pytesseract                                     # OCR - extract text from images
-from sklearn.metrics.pairwise import cosine_similarity   # To measure similarity between text documents
-from sklearn.feature_extraction.text import TfidfVectorizer  # Convert text to numerical format using TF-IDF
-import spacy                                   # Named Entity Recognition (NER) - extract names, dates, etc.
-import matplotlib.pyplot as plt                          # Visualization - display images, graphs, ELA maps
-
+import numpy as np
+from flask import Flask, request, jsonify, render_template_string
+from flask_cors import CORS
+from PIL import Image, ImageStat, ImageChops, ImageEnhance
+import cv2
+import pytesseract
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
+import spacy
+import matplotlib.pyplot as plt
 
 # Suppress warnings
 warnings.filterwarnings("ignore")
@@ -47,8 +46,8 @@ os.makedirs(METADATA_FOLDER, exist_ok=True)
 IMAGE_HASH_CACHE = {}
 OCR_CACHE = {}
 
-# Set Tesseract OCR path (update this path according to your installation)
-pytesseract.pytesseract.tesseract_cmd = os.getenv("TESSERACT_PATH", r'C:\Program Files\Tesseract-OCR\tesseract.exe')
+# Set Tesseract OCR path for Railway environment
+pytesseract.pytesseract.tesseract_cmd = os.getenv("TESSERACT_PATH", "/usr/bin/tesseract")
 
 # Common document fields to extract and analyze
 COMMON_FIELDS = [
