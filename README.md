@@ -10,3 +10,6 @@
 ![Screenshot 2025-04-07 143518](https://github.com/user-attachments/assets/10215084-e491-40a8-b971-1f568c84eac7)
 ![Screenshot 2025-04-07 143529](https://github.com/user-attachments/assets/528cb16e-7010-419b-8a14-11a58ee7fd68)
 ![Screenshot 2025-04-07 152841](https://github.com/user-attachments/assets/e0fafc8d-37d0-4d2c-8838-e17cfed75c75)
+## Testing
+
+The project includes automated testing to validate document verification functionality and ensure reliable extraction and analysis of document data.
